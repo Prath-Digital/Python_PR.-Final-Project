@@ -12,6 +12,7 @@ class HappinessDataAnalysis:
         self.file_path = file_path
         self.df = None
 
+    # 1. Generate Data
     def generate_data(self):
         if os.path.exists("data_generate.py") and not os.path.exists(
             "global_happiness_report.csv"
@@ -23,7 +24,7 @@ class HappinessDataAnalysis:
         elif not os.path.exists("data_generate.py"):
             print("❌ data_generate.py not found!")
 
-    # 1. Load Data
+    # 2. Load Data
     def load_data(self):
         if not os.path.exists(self.file_path):
             print("⚠️ Data file not found!")
@@ -34,7 +35,7 @@ class HappinessDataAnalysis:
         print("✅ Data loaded successfully.")
         print("Shape:", self.df.shape)
 
-    # 2. Basic Info
+    # 3. Basic Info
     def basic_info(self):
         if self.df is None:
             print("⚠️ Data not loaded.")
@@ -44,7 +45,7 @@ class HappinessDataAnalysis:
         print("\nMissing Values:\n", self.df.isna().sum())
         print("\nMissing Values (%):\n", (self.df.isna().sum() / len(self.df)) * 100)
 
-    # 3. Handle Missing Values
+    # 4. Handle Missing Values
     def handle_missing_values(self):
         if self.df is None:
             print("⚠️ Data not loaded.")
@@ -96,7 +97,7 @@ class HappinessDataAnalysis:
                 case _:
                     print("❌ Invalid choice!")
 
-    # 4. All Analysis
+    # 5. All Analysis
     def all_analysis(self):
         # ===============================
         # 1. Basic Info
@@ -211,7 +212,7 @@ class HappinessDataAnalysis:
         )
         print("Global Average Happiness-to-GDP Ratio:", df["Happiness_to_GDP"].mean())
 
-    # 5. All Visualizations
+    # 6. All Visualizations
     def all_visualizations(self):
         if self.df is None:
             print("⚠️ Data not loaded. Please load data first.")
